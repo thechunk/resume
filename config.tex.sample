@@ -1,0 +1,56 @@
+% !TeX spellcheck = en_US
+% personal info
+\newcommand{\configtitlename}{Full Name}
+\newcommand{\configphone}{+1 234 5678}
+\newcommand{\configappinternalemail}{full.name@company.com}
+\newcommand{\configappexternalemail}{full.name@company.com}
+\newcommand{\configlinkedinurl}{https://linkedin.com/in/fullname}
+\newcommand{\configlinkedintitle}{linkedin.com/in/fullname}
+\newcommand{\configgithuburl}{https://github.com/username}
+\newcommand{\configgithubtitle}{github.com/username}
+
+% experience
+\newcommand{\configcompany}[1]{%
+    \ifnum0=#1
+        Small Software Startup%
+    \fi
+    \ifnum1=#1
+        Other Small Software Startup%
+    \fi
+    \ifnum2=#1
+        Digital Agency%
+    \fi
+    \ifnum3=#1
+        Digital Photo Frame Company%
+    \fi
+    \ifnum4=#1
+        Financial Services Enterprise%
+    \fi
+    \ifnum5=#1
+        Financial Services Enterprise%
+    \fi
+}
+
+% education
+\newcommand{\configpublications}{Full Name. Publication Title. In Publication. pp. 12-34. (Conference), City, Country, Year.}
+\newcommand{\configuniversity}{University Name}
+\newcommand{\configdissertation}{Dissertation Title}
+
+% projects
+\newcommand{\configprojectwine}{Project}
+\newcommand{\configprojectclinics}{Project}
+\newcommand{\configprojectrestaurant}{Project}
+\newcommand{\configprojectmeasure}{Project}
+\newcommand{\configprojectbudget}{Project}
+
+% proprietary/identifiable terms
+\newcommand{\configtermcms}{global CMS}
+\newcommand{\configterminnovationalt}{innovation}
+\newcommand{\configtermopenshift}{enterprise Openshift}
+\newcommand{\configtermhackathonalt}{hackathon}
+\newcommand{\configtermhackathoncountry}{Country Name}
+\newcommand{\configtermhackathonideaone}{some mobile app concept}
+\newcommand{\configtermhackathonideatwo}{some data analysis concept with working prototype comparing data from live sources}
+\newcommand{\configtermgovappname}{App Name}
+\newcommand{\configtermgovaward}{Gov Competition Name}
+\newcommand{\configtermgovaccelerator}{Gov Accelerator Name}

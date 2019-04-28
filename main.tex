@@ -1,0 +1,94 @@
+% !TeX spellcheck = en_US
+\documentclass[a4paper,twoside,10pt]{article}
+
+\input{config.tex}
+
+\usepackage{titlesec,enumitem,hyperref,xcolor,fontawesome,cmbright,etoolbox}
+\usepackage[margin=0.5in]{geometry}
+\usepackage[ocgcolorlinks]{ocgx2}
+
+\definecolor{bluegrey}{rgb}{0.23,0.31,0.5}
+\definecolor{lightgrey}{gray}{0.25}
+\newcommand{\titlecolor}{\color{bluegrey}}
+\newcommand{\sectioncolor}{\color{lightgrey}}
+
+%
+% configurable
+%
+\newtoggle{appinternal}
+\toggletrue{appinternal}
+%\togglefalse{appinternal}
+\newtoggle{appinternaluk}
+%\toggletrue{appinternaluk}
+%\togglefalse{appinternaluk}
+
+\titlespacing*{\section}
+{0pt}{1.2ex}{0.9ex}
+\titleformat{\section}{\large\bfseries\sectioncolor}{}{}{}[{\color{black}%
+\titlerule[0.5pt]}]
+\pagenumbering{gobble}
+\hypersetup{
+    colorlinks=true,
+    urlcolor={blue!50!black},
+    pageanchor=false
+}
+
+\makeatletter
+\newcommand{\email}[1]{\gdef\@email{#1}}
+\newcommand{\phone}[1]{\gdef\@phone{#1}}
+\newcommand{\linkedin}[2]{\gdef\@linkedin{\href{#1}{#2}}}
+\newcommand{\github}[2]{\gdef\@github{\href{#1}{#2}}}
+\def\maketitle{
+    \noindent
+    \begin{minipage}[c]{0.26\textwidth}
+
+        \Large\bfseries\titlecolor\MakeUppercase{\@title}
+
+    \end{minipage}%
+    \begin{minipage}[t]{0.48\textwidth}
+
+        \begin{flushright}
+            \iftoggle{appinternaluk}{
+                \textit{Willing to relocate to United Kingdom}\enskip\faDotCircleO
+            }{
+                %\ifdefined\@linkedin
+                %\@linkedin\enskip\faLinkedin
+                %\fi
+                \textit{Willing to relocate}\enskip\faDotCircleO
+            }
+            \ifdefined\@github
+            \\\@github\enskip\faGithub
+            \fi
+        \end{flushright}
+
+    \end{minipage}%
+    \begin{minipage}[t]{0.26\textwidth}
+
+        \begin{flushright}
+            \href{mailto:\@email}{\@email}\enskip\faEnvelope\\
+            \href{tel:\@phone}{\@phone}\enskip\faPhone
+        \end{flushright}
+
+    \end{minipage}
+    \vspace{-3.6ex}
+}
+\makeatother
+
+\title{\configtitlename}
+\date{}
+\iftoggle{appinternal}{
+    \email{\configappinternalemail}
+}{
+    \email{\configappexternalemail}
+}
+\phone{\configphone}
+\linkedin{\configlinkedinurl}{\configlinkedintitle}
+\github{\configgithuburl}{\configgithubtitle}
+
+\begin{document}
+\maketitle
+%
+\input{content.tex}
+\maincontent{\sectioncolor}{appinternal}
+
+\end{document}

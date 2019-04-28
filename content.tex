@@ -1,0 +1,148 @@
+% !TeX spellcheck = en_US
+\newcommand{\maincontent}[2]{
+    
+\newcommand{\appinternal}{#2}
+
+\iftoggle{\appinternal}{
+    \newcommand{\centerhpadding}{0.015\textwidth}
+    \newcommand{\leftcolwidth}{\dimexpr(0.57\textwidth - \centerhpadding / 2)}
+    \newcommand{\rightcolwidth}{\dimexpr(0.43\textwidth - \centerhpadding / 2)}
+}{
+    \newcommand{\centerhpadding}{0.015\textwidth}
+    \newcommand{\leftcolwidth}{\dimexpr(0.6\textwidth - \centerhpadding / 2)}
+    \newcommand{\rightcolwidth}{\dimexpr(0.4\textwidth - \centerhpadding / 2)}
+}
+\newcommand{\lefttitlecompany}[2]{##1, #1##2}
+\newcommand{\rightdate}[1]{\hfill \emph{\small{##1}}}
+
+\setlist{nosep,nolistsep}
+\setlist[itemize,description]{leftmargin=*}
+\setlist[description]{leftmargin=*,itemsep=1ex}
+
+\section*{Experience}
+
+\begin{description}
+    \item[\lefttitlecompany{Engineer I}{\configcompany{5}}]
+        \rightdate{Jun 2018--present}
+        \begin{itemize}
+            \item Pioneer and lead engineer role in onboarding React Native technology stack for mobile projects
+            \item Migration of third-party legacy .NET Framework application to in-house .NET Core MVC platform and PostgreSQL
+            \item Implement RESTful gateway API service using Java Spring Framework for mobile app consumption
+            \item Picking up project management role in two projects and end-to-end capacity role in one new project
+            \item Use Python to automate SSL certificates generation for mutual TLS authentication and SOAP WSS message signing
+        \end{itemize}
+
+    \item[\lefttitlecompany{Engineer II}{\configcompany{4}}]
+        \rightdate{Mar 2016--Jun 2018}
+        \begin{itemize}
+            \item Build, maintain and support solutions on \iftoggle{\appinternal}{\configtermcms}{global CMS} across all regions delivering over 100 requests
+            \item Work with business partners to deliver seven projects in engineering role with one in project management capacities
+            \item Participate in \iftoggle{\appinternal}{\configterminnovationalt}{innovation} workstream delivering four prototypes to business teams with technologies such as Angular.js, React Native, Node.js and Java Spring Framework deployed on \iftoggle{\appinternal}{\configtermopenshift}{enterprise Openshift} platforms
+            \item Adapt to Agile methodologies and manage software development life cycle
+        \end{itemize}
+
+    \item[\lefttitlecompany{Senior Web Developer}{\configcompany{3}}]
+        \rightdate{Mar 2015--Mar 2016}
+        \begin{itemize}
+            \item Test driven development of Angular.js web client and Node.js microservices for consumer digital photo frames
+            \item Key member in new B2B product development leveraging WebSocket for higher throughput to IoT digital signage devices
+            \item Build HTML5 WebView-based application for specialized Android hardware with performance and memory limitations
+            \item iOS/Android hybrid application and native plugin development using Ionic Framework and Cordova
+        \end{itemize}
+
+    \item[\lefttitlecompany{Lead Developer}{\configcompany{2}}]
+        \rightdate{Feb 2014--Feb 2015}
+        \begin{itemize}
+            \item Architect and develop custom solutions for web and iOS using Craft CMS and Laravel according to requirements
+            \item End-to-end project involvement: scope definition, implementation, testing and deployment
+            \item Onboarding, training, hiring of new engineering resources and project resource planning
+            \item Establish Git best practices and build Vagrant image to streamline engineering team workflow, increasing development efficiency and significantly reducing risks of data loss
+        \end{itemize}
+
+    \item[\lefttitlecompany{Software Engineer}{\configcompany{1}}]
+        \rightdate{Feb 2012--Oct 2013}
+        \begin{itemize}
+            \item Deliver two native Objective-C iOS apps from concept and implementation to App Store launch: a doctor listing/booking system and an events discovery platform
+            \item Build scalable, unit tested backends with memcached to reduce database load; Solr/Lucene for events indexing
+            \item Implement recommendation engine for upcoming events personalization per user
+            \item Automate existing manual data insertion process by building web scraping solution with Python and Scrapy
+            %\item Integrate push notifications with Urban Airship to facilitate connectivity with APNS
+            \iftoggle{\appinternal}{\item Manage approval process for above iOS app with Apple with multiple review and modification rounds}{}
+        \end{itemize}
+
+    \item[\lefttitlecompany{Developer}{\configcompany{0}}] \rightdate{Nov 2010--Dec 2011}
+        \begin{itemize}
+            \item Lead front and backend Django development of question-and-answer social networking web platform
+        \end{itemize}
+\end{description}
+
+\noindent
+\begin{minipage}[t]{\leftcolwidth}
+    
+    \section*{Achievements}
+    
+    \begin{description}[style=sameline,leftmargin=0pt]
+        \iftoggle{\appinternal}{}{
+            \item[\configcompany{5}] Consistently recognized with rating reserved for top 10\% employees in annual performance appraisals since joining
+        }
+        \item[\configcompany{4}] Top six finalist in 2016 \iftoggle{\appinternal}{\configtermhackathonalt}{hackathon} with {\configtermhackathonideaone}
+        \item[\configcompany{4}] First place in 2017 {\configtermhackathoncountry} campus local \iftoggle{\appinternal}{\configtermhackathonalt}{hackathon} with {\configtermhackathonideatwo}
+        \item[\configcompany{1}] Gold Award winner in \emph{\configtermgovaward} competition with {\configtermgovappname} mobile app
+        \item[\configcompany{0}] Accepted into government-run {\configtermgovaccelerator}
+    \end{description}
+
+    \section*{Projects}
+
+    \begin{description}[style=sameline,leftmargin=0pt]
+        \item[\configprojectbudget] 2019 -- iOS app where expenses can be tracked. Swift, Kotlin, Spring Framework, Apache Kafka, OAuth2, Google Sheets API
+        \item[\configprojectmeasure] 2017 -- Augmented reality tape measure app. Swift, ARKit
+        \item[\configprojectrestaurant] 2017 -- Restaurant locator app with data scraping from public sources. Node.js, React.js, Objective-C, Redis
+        \item[\configprojectclinics] 2015 -- Hybrid iOS/Android app for medical clinics to manage bookings. Ionic, Angular.js, Cordova, APNS, GCM, Google Analytics
+        \item[\configprojectwine] 2013 -- Wine subscription service website with basic CMS. PHP, Laravel, hosted on AWS (EC2, RDS MySQL and SES)
+    \end{description}
+
+    \iffalse
+    \section*{Publications}
+    \configpublications
+    \fi
+
+\end{minipage}%
+\hspace{\centerhpadding}%
+\begin{minipage}[t]{\rightcolwidth}
+    \raggedright
+    
+    \section*{Education}
+    
+    \begin{description}[style=sameline,leftmargin=0pt]
+        \item[\configuniversity]
+        \rightdate{2006--2010}\\
+        B.Sc. (Hons) in Computer Science
+        
+        \item[Stanford University] \rightdate{2016}\\
+        Machine Learning by Associate Professor Andrew Ng via Coursera
+        \iffalse
+        \begin{itemize}
+            \item Dissertation: {\configdissertation}
+        \end{itemize}
+        \fi
+    \end{description}
+
+    \section*{Skills}
+
+    \begin{description}[style=nextline,leftmargin=0pt]
+        \item[Languages]
+            JavaScript, SQL, HTML, CSS, Objective-C, PHP; competency in: Python, Swift, C\#, Java, Bash
+
+        \item[Frameworks]
+            React.js, Laravel, Node.js, MySQL, .NET Core MVC, jQuery;
+            competency in: Cocoa Touch, Angular.js, Spring Framework, Express, PostgreSQL, Redis, Craft CMS
+
+        \item[Mobile]
+            React Native, Cordova, native iOS, responsive web design; competency in: native Android
+
+        \item[Workflow]
+            Git, Ansible, AWS, OpenShift, shell scripting; competency in: Docker, Jenkins
+    \end{description}
+
+\end{minipage}
+}
