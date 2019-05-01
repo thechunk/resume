@@ -7,6 +7,7 @@ before_install:
   - ssh-add github_key
   - sudo apt-get install fonts-font-awesome
 install:
+  - git clone git@github.com:thechunk/resume-config.git $TRAVIS_BUILD_DIR/config
   - export PATH="$HOME/miniconda/bin:$PATH"
   - if ! command -v conda > /dev/null; then wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
     -O miniconda.sh; bash miniconda.sh -b -p $HOME/miniconda -u; conda config --add
