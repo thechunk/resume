@@ -2,7 +2,6 @@ language: generic
 
 before_install:
   - sudo apt-get install fonts-font-awesome
-  - cp $TRAVIS_BUILD_DIR/config.tex.sample $TRAVIS_BUILD_DIR/config.tex
 
 install:
   # Silent install from conda docs
@@ -38,6 +37,7 @@ cache:
     - $HOME/.cache/Tectonic
 script: # Change working directory each time so including files will work. Change back so the pdfs can be found for deployment. This way, building multiple files goes well.
  - cd $TRAVIS_BUILD_DIR
+ - cp $TRAVIS_BUILD_DIR/config/config.tex $TRAVIS_BUILD_DIR/config.tex
  # Run tectonic once to generate intermediate files
  - tectonic --keep-intermediates --reruns 0 ./main.tex
  # If a bcf file exists run biber to compile references
