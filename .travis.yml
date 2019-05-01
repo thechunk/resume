@@ -29,3 +29,12 @@ cache:
     - tectonic --keep-intermediates --reruns 0 ./main.tex
     - if [ -f "main.bcf" ]; then biber main; fi
     - tectonic ./main.tex --print
+  deploy:
+    provider: releases
+    api_key:
+      secure: 2hfCjsowQIAvIn8nd5Uje01yjKYLNErYvXDgj8Swo6HselsdK0EmC+7RJHzouo7RfdVQqWId4ccIFe63pggh2fh+ilZG4Z7GrrnzMKXYau1IEUQ6/goRLLqr6kuz6lws1rS9kofZMOt4oIeqodDq8F6dkO+r5ek3W95BIJsWpDnnMVV2Dj6h4IPfj4Hdz2TUZRJ0JHuBI8qbZWGO9Dx5EBm3AQ1Ybm40p3RekHJosDRrG+U9jkKeRUNVshBWXtX/lDwyA82XDr6U2jXey9SMzZ6GFx8ThCr2DPDVk76y+nhblziMYJbBP5fTjnzPlUScyxD38ZBKFJQ7eARsdO1lrINKpQ3clCP4Vy5iAl71kq2oVBaHCBDxr/GI4rWiy9+ar+JSWlH4Ewv4yPN5roKkP48c5gmPmURwz8GpRunceq249mKlBJ24qHHXeOJzDWnCQldEPrnpXTBXfmPC40rlFLYoTo/GyXNf8mz92Rh9gEPzEuNpOs7aVQmZUm3vR2w9g0x5IQ5cqzK3pJHu+gEr7bfO4EXN2zrfomWxTnclsiqGDGEgw4qwzZ6cczVUII6Q87waOmsRZ4muruhB3Ne/P8WNSIejhnb8l6oUf2lqj1sdwwkC25ANQQ6CCYeXM//pYjty2QEzgrA0zqUpTf4aF9YfPgp3gTwdRcum7vsguks=
+      file: ./main.pdf
+      skip_cleanup: true
+      on:
+        tags: true
+        branch: master
