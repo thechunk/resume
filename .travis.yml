@@ -1,4 +1,16 @@
-language: generic
+sudo:       required
+language:   generic
+services:   docker
+
+# Docs of the options: https://github.com/Strauman/travis-latexbuild/tree/master#configuration-options
+tex-config:
+- tex-scheme=small
+- push-type=none
+- build-pattern=main.tex
+#- latexmk-flags=-dvi -f
+# Check at https://www.ctan.org/pkg/package-name in which TeX Live package a LaTeX package is contained.
+- packages=xkeyval, collection-latex, collection-langeuropean, exam, amsmath, amscls, mathtools, thmtools, stmaryrd, xcolor, pdfpages, pgf, cancel, hyperref, pgfplots, listings, scalerel, stackengine, etoolbox, listofitems, marvosym, amsfonts, opensans, slantsc, fancyhdr, ulem, algorithms, algorithmicx, float, booktabs, enumitem, polynom, fancyvrb, makecmds, multirow, chngcntr, fvextra, upquote, lineno, ifplatform, xstring, framed, caption, collection-fontsrecommended, minted, pgfgantt, geometry, beamer, translator, environ, trimspaces, imakeidx, graphics, tools, oberdiek
+
 before_install:
   - openssl aes-256-cbc -K $encrypted_5f210af7f267_key -iv $encrypted_5f210af7f267_iv
     -in github_key.enc -out github_key -d
@@ -6,28 +18,11 @@ before_install:
   - eval $(ssh-agent -s)
   - ssh-add github_key
   - sudo apt-get install fonts-font-awesome
-install:
-  - git clone git@github.com:thechunk/resume-config.git $TRAVIS_BUILD_DIR/config
-  - export PATH="$HOME/miniconda/bin:$PATH"
-  - if ! command -v conda > /dev/null; then wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
-    -O miniconda.sh; bash miniconda.sh -b -p $HOME/miniconda -u; conda config --add
-    channels conda-forge; conda config --set always_yes yes; conda install tectonic==0.1.10;
-    fi
-  - conda info -a
-  - sudo mkdir -p ~/.config/Tectonic/
-  - echo "[[default_bundles]]" | sudo tee --append ~/.config/Tectonic/config.toml
-  - sudo echo "url = \"https://tectonic.newton.cx/bundles/tlextras-2018.1r0/bundle.tar\""
-    | sudo tee --append ~/.config/Tectonic/config.toml
-cache:
-  directories:
-    - "$HOME/miniconda"
-    - "$HOME/.cache/Tectonic"
+
+# We will use the docker image from https://hub.docker.com/r/strauman/travis-latexbuild/
 script:
-  - cd $TRAVIS_BUILD_DIR
-  - cp $TRAVIS_BUILD_DIR/config/config.tex $TRAVIS_BUILD_DIR/config.tex
-  - tectonic --keep-intermediates --reruns 0 ./main.tex
-  - if [ -f "main.bcf" ]; then biber main; fi
-  - tectonic ./main.tex --print
+- docker run --mount src=$TRAVIS_BUILD_DIR/,target=/repo,type=bind strauman/travis-latexbuild:small
+
 deploy:
   provider: releases
   api_key:
