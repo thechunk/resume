@@ -22,7 +22,7 @@ before_install:
 script:
 - git clone git@github.com:thechunk/resume-config.git $TRAVIS_BUILD_DIR/config
 - cp $TRAVIS_BUILD_DIR/config/config.tex $TRAVIS_BUILD_DIR/config.tex
-- docker run --mount src=$TRAVIS_BUILD_DIR/,target=/repo,type=bind phpirates/texlive-latexbuild:small-2018
+- docker run --mount src=$TRAVIS_BUILD_DIR/,target=/repo,type=bind strauman/travis-latexbuild:small
 
 deploy:
   provider: releases
